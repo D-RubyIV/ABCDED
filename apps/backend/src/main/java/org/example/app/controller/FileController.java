@@ -91,7 +91,8 @@ public class FileController {
 
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
 
-        String encodedFilename = URLEncoder.encode(fileModel.getName(), StandardCharsets.UTF_8.toString());
+        String encodedFilename = URLEncoder.encode(fileModel.getName(), StandardCharsets.UTF_8.toString())
+                .replace("+", "%20");
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(fileModel.getType()))
