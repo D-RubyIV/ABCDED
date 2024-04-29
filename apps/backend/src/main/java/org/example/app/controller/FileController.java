@@ -73,7 +73,7 @@ public class FileController {
             fileRepository.save(fileModel);
             return ResponseEntity.ok().body(fileModel);
         } catch (Exception e) {
-            throw new Exception("File could not be saved: " + e.getMessage());
+            throw new BadRequestException("File could not be saved: " + e.getMessage());
         }
     }
 
@@ -86,7 +86,7 @@ public class FileController {
         File file = filePath.toFile();
 
         if (!file.exists()) {
-            throw new IOException("File not found");
+            throw new BadRequestException("File not found");
         }
 
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(filePath));
