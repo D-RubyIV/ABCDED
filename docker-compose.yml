@@ -27,6 +27,8 @@ services:
       dockerfile: apps/docker/backend/Dockerfile
     ports:
       - "8080:8080"
+    volumes:
+      - ./apps/backend/source:/app/uploads
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/product?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: product
